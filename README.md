@@ -87,6 +87,7 @@ This Project is responsive in all devices, such a laptop(PC), android and tablet
     </td>
   </tr>
 </table>
+
   ```
   4. (2,3) -> (2,5)
   ```
@@ -106,10 +107,11 @@ This Project is responsive in all devices, such a laptop(PC), android and tablet
     </td>
   </tr>
 </table>
+
   ```
   5. (6,4) -> (2,1)
   ```
-    <table>
+  <table>
   <tr>
     <td>
       - Basic algorithm: <br><br>
