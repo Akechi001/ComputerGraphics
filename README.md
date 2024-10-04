@@ -31,17 +31,20 @@ This Project is responsive in all devices, such a laptop(PC), android and tablet
   ```
   1. (-5,5) -> (1,2)
   ```
-  - Basic algorithm:
-    ![Screenshot 2024-10-04 224949](https://github.com/user-attachments/assets/0638d65f-f87f-4fe9-843a-5745c1f1211c)
-    ![Screenshot 2024-10-04 225203](https://github.com/user-attachments/assets/3637946d-3601-4bfd-80d2-1361afcd0d3c)
-
-
-  ---
-  
-  - DDA (Digital Differential Analyzer):
-    ![Screenshot 2024-10-04 225113](https://github.com/user-attachments/assets/70aa2709-50ff-4bbe-947b-1c7df4fd6d93)
-    ![Screenshot 2024-10-04 225126](https://github.com/user-attachments/assets/96026d47-abca-412c-b1af-b98567635d8c)
-
+ <table>
+  <tr>
+    <td>
+      - Basic algorithm: <br>
+      <img src="https://github.com/user-attachments/assets/0638d65f-f87f-4fe9-843a-5745c1f1211c" width="200"/>
+      <img src="https://github.com/user-attachments/assets/3637946d-3601-4bfd-80d2-1361afcd0d3c" width="200"/>
+    </td>
+    <td>
+      - DDA (Digital Differential Analyzer): <br>
+      <img src="https://github.com/user-attachments/assets/70aa2709-50ff-4bbe-947b-1c7df4fd6d93" width="200"/>
+      <img src="https://github.com/user-attachments/assets/96026d47-abca-412c-b1af-b98567635d8c" width="200"/>
+    </td>
+  </tr>
+</table>
 
   ```
   2. (4,3) -> (8,-2)
