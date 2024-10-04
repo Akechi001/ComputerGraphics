@@ -24,6 +24,44 @@ This Project is responsive in all devices, such a laptop(PC), android and tablet
   ![Screenshot 2024-10-04 223721](https://github.com/user-attachments/assets/1d3525ae-4693-42c4-be8d-a83b6a4ad7bc)
 
 # Deficiency
-- Big data of X and Y
+- Data X or Y too bigger
 
 # Example
+  Here are the example:
+  ```
+  1. (-5,5) -> (1,2)
+  ```
+  - Basic algorithm:
+    
+  --
+  - DDA (Digital Differential Analyzer):
+
+
+  ```
+  2. (4,3) -> (8,-2)
+  ```
+  - Basic algorithm:
+  --
+  - DDA (Digital Differential Analyzer):
+
+  ```
+  3. (2,3) -> (5,3)
+  ```
+  - Basic algorithm:
+    
+  --
+  - DDA (Digital Differential Analyzer):
+  ```
+  4. (2,3) -> (2,5)
+  ```
+  - Basic algorithm:
+    
+  --
+  - DDA (Digital Differential Analyzer):
+  ```
+  5. (6,4) -> (2,1)
+  ```
+  - Basic algorithm:
+    
+  --
+  - DDA (Digital Differential Analyzer):
