@@ -38,6 +38,8 @@ This Project is responsive in all devices, such a laptop(PC), android and tablet
       <img src="https://github.com/user-attachments/assets/0638d65f-f87f-4fe9-843a-5745c1f1211c" width="200"/>
       <img src="https://github.com/user-attachments/assets/3637946d-3601-4bfd-80d2-1361afcd0d3c" width="200"/>
     </td>
+  </tr>
+   <tr>
     <td>
       - DDA (Digital Differential Analyzer): <br>
       <img src="https://github.com/user-attachments/assets/70aa2709-50ff-4bbe-947b-1c7df4fd6d93" width="200"/>
