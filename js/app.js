@@ -37,7 +37,7 @@ function basicAlgorithm() {
 
   // Loop untuk menghitung nilai x dan y berikutnya
   for (; x1 !== x2; x1 += stepX, y1 += stepY) {
-    insertRowBasic(tableBody, x1, dx, x1 + stepX, y1, m, y1 + stepY, `(${x1 + stepX},${Math.round(y1 + stepY)})`);
+    insertRowBasic(tableBody, x1, x1 < x2 ? dx : -dx, x1 + stepX, y1, x1 < x2 ? m : -m, y1 + stepY, `(${x1 + stepX},${Math.round(y1 + stepY)})`);
     coordinates.push({ x: Math.round(x1 + stepX), y: Math.round(y1 + stepY) });
   }
   drawChart(coordinates);
