@@ -1,0 +1,97 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <script src="js/app.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Add your site or application content here -->
+  <div class="box">
+    <div class="title padding">
+      <h1>Digital Dots - Calculator</h1>
+    </div>
+    <hr class="line">
+    <div class="question">
+      <div class="point-question padding">
+        <div class="text-question">
+          <p>Starting Point</p>
+          <p>:</p>
+        </div>
+        <div>
+          <input type="text" id="input1" placeholder="e.g. '(x,y)'" required>
+        </div>
+      </div>
+      <div class="point-question padding">
+        <div class="text-question">
+          <p>End Point</p>
+          <p>:</p>
+        </div>
+        <div>
+          <input type="text" id="input2" placeholder="e.g. '(x,y)'" required>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="button-function padding">
+      <div class="button responsive-button">
+        <button type="button" onclick="if (validateInputs()) { split(); basicAlgorithm(); }">Basic Algorithm</button>
+      </div>
+      <div class="button responsive-button">
+        <button type="button" onclick="if (validateInputs()) { split(); ddaAlgorithm(); }">DDA (Digital Differential Analyzer)</button>
+      </div>
+      <div class="button responsive-button clear-button">
+        <button onclick="clearInput()">Clear</button>
+      </div>
+    </div>
+    <hr class="line">
+    <div id="result"></div>
+    <div class="table-answer padding">
+      <h2 id="question"></h2>
+      <p id="diketahui"></p>
+      <p id="error-answer"></p>
+      <div class="table-container">
+        <table id="resultTable">
+        <thead id="head-table">
+        </thead>
+        <tbody id="answer-table">
+        <!-- Data akan ditambahkan di sini -->
+        </tbody>
+      </table>
+      </div>
+
+    </div>
+    <div id="chart-box" class="padding">
+      <div id="chart-question"></div>
+      <div id="chart-answer"></div>
+
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
