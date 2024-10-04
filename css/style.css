@@ -378,6 +378,9 @@
   color: indianred;
 }
 
+table{
+  background-color: white;
+}
   #chart-answer {
     width: 100%;
     height: auto;
@@ -387,8 +390,9 @@
   canvas {
     width: 100% !important;
     height: auto !important;
+    background-color: floralwhite;
+    border: 1px solid black;
   }
-
 .title{
   text-align: center;
 }
