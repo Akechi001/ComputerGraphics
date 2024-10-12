@@ -162,12 +162,12 @@ function bressenhamAlgorithm(){
 
 function bresenhamCircleAlgorithm() {
   // Use the predefined variables
-  var xc = x1; // Center X-coordinate
-  var yc = y1; // Center Y-coordinate
+  var xc = x1;
+  var yc = y1;
   var k = 0;
   var x = 0;
   var y = r;
-  var p = 1 - r;  // Initial decision parameter
+  var p = 1 - r;
   const coordinates = [];
 
   var tableBody = document.getElementById('resultTable').getElementsByTagName('tbody')[0];
@@ -182,7 +182,6 @@ function bresenhamCircleAlgorithm() {
 
   insertRowBressenherm(tableBody, '', '', x1, y1,`(${x1},${y1})`);
   coordinates.push({ x: x1, y: y1 });
-  // Function to plot points considering the 8-way symmetry
   function plotCirclePoints(xc, yc, x, y) {
     const points = [
       { x: xc + x, y: yc + y },
@@ -220,7 +219,7 @@ function bresenhamCircleAlgorithm() {
 
 
 
-let currentChart = null; // Menyimpan referensi ke chart saat ini
+let currentChart = null;
 
 function drawChart(coordinates) {
     document.getElementById('chart-answer').innerHTML='<canvas id="ddaCanvas" width="400" height="400"></canvas>';
@@ -232,16 +231,16 @@ function drawChart(coordinates) {
   }
   const xValues = coordinates.map(coord => Math.round(coord.x));
   const yValues = coordinates.map(coord => Math.round(coord.y));
-  const minX = Math.floor(Math.min(...xValues)) -1; // Floor untuk mendapatkan nilai integer
-  const maxX = Math.ceil(Math.max(...xValues)) +1; // Ceil untuk mendapatkan nilai integer
+  const minX = Math.floor(Math.min(...xValues)) -1;
+  const maxX = Math.ceil(Math.max(...xValues)) +1;
   const minY = Math.min(...yValues)-1;
   const maxY = Math.max(...yValues)+1;
   const xLabels = [];
   for (let i = maxX; i >= minX; i--) {
-    xLabels.push(i); // Push all integers from maxX to minX
+    xLabels.push(i);
   }
   const chartData = {
-    labels: xLabels, // Menetapkan label sumbu x sesuai dengan koordinat,
+    labels: xLabels,
     datasets: [{
       label: "Digital Line",
       data: coordinates,
@@ -278,8 +277,8 @@ function drawChart(coordinates) {
       drawCoordinates: {
         afterDatasetsDraw: (chart, args, options) => {
           const ctx = chart.ctx;
-          const canvasWidth = chart.width; // Lebar canvas
-          const canvasHeight = chart.height; // Tinggi canvas
+          const canvasWidth = chart.width;
+          const canvasHeight = chart.height;
           chart.data.datasets.forEach((dataset, i) => {
             const meta = chart.getDatasetMeta(i);
             meta.data.forEach((point, index) => {
@@ -288,17 +287,14 @@ function drawChart(coordinates) {
               const coord = coordinates[index];
               const label = `(${coord.x}, ${coord.y})`;
 
-              // Set styling for text
               ctx.fillStyle = 'black';
               ctx.font = '12px Arial';
 
-              // Penempatan label dengan penyesuaian untuk tidak keluar dari canvas
-              const labelWidth = ctx.measureText(label).width; // Lebar label
-              const labelHeight = 12; // Tinggi label (sesuaikan dengan font)
+              const labelWidth = ctx.measureText(label).width;
+              const labelHeight = 12;
 
-              // Cek dan sesuaikan posisi x
               const adjustedX = (xPos + 5 + labelWidth > canvasWidth) ? xPos - labelWidth - 5 : xPos + 5;
-              // Cek dan sesuaikan posisi y
+
               const adjustedY = (yPos - labelHeight - 5 < 0) ? yPos + labelHeight + 5 : yPos - 5;
 
               ctx.fillText(label, adjustedX, adjustedY); // Positioning the label near the point
@@ -315,12 +311,11 @@ function drawChart(coordinates) {
     data: chartData,
     options: chartOptions,
     plugins: [{
-      id: 'drawCoordinates', // Custom plugin ID
+      id: 'drawCoordinates',
       afterDatasetsDraw: chartOptions.plugins.drawCoordinates.afterDatasetsDraw
     }]
   });
 }
-// Fungsi untuk mengatur ulang tabel
 function resetTable() {
   document.getElementById('diketahui').innerHTML = '';
   document.getElementById("head-table").innerText = "";
@@ -328,7 +323,6 @@ function resetTable() {
   document.getElementById("error-answer").innerHTML = "";
 }
 
-// Fungsi untuk membuat header tabel
 function createTableHeader() {
   var tableHead = document.getElementById('resultTable').getElementsByTagName('thead')[0];
   var rowHead = tableHead.insertRow();
@@ -338,7 +332,6 @@ function createTableHeader() {
   rowHead.insertCell(3).textContent = '(X,Y)';
 }
 
-// Fungsi untuk menambah baris ke tabel
 function insertRow(tableBody, k, x, y, point) {
   var row = tableBody.insertRow();
   row.insertCell(0).textContent = k;
@@ -350,16 +343,12 @@ function insertRow(tableBody, k, x, y, point) {
 
 function split() {
   let input1, input2;
-
-  // Check if the Line inputs are visible (for line selection)
   const lineInputsVisible = !document.getElementById('line-inputs').classList.contains('hidden');
 
   if (lineInputsVisible) {
-    // Get inputs for Line
     input1 = document.getElementById("line-start").value;
     input2 = document.getElementById("line-end").value;
 
-    // Remove parentheses and split by comma
     input1 = input1.replace(/[()]/g, '');
     input2 = input2.replace(/[()]/g, '');
 
@@ -371,14 +360,11 @@ function split() {
     x2 = parseFloat(coordinates2[0].trim());
     y2 = parseFloat(coordinates2[1].trim());
 
-    console.log("Line Coordinates:", { x1, y1, x2, y2 });
 
   } else {
-    // Get inputs for Circle
     input1 = document.getElementById("circle-start").value;
     const radius = document.getElementById("circle-radius").value;
 
-    // Remove parentheses and split by comma
     input1 = input1.replace(/[()]/g, '');
 
     const coordinates1 = input1.split(',');
@@ -387,7 +373,6 @@ function split() {
     y1 = parseFloat(coordinates1[1].trim());
     r = parseFloat(radius.trim());
 
-    console.log("Circle Coordinates and Radius:", { x1, y1, r });
   }
 }
 
@@ -396,14 +381,11 @@ function validateInputs() {
   let message = '';
   let isValid = true;
 
-  // Regular expression to validate the coordinate format (x, y)
   const regex = /^\(-?\d+,-?\d+\)$/;
 
-  // Check if the Line inputs are visible (for line selection)
   const lineInputsVisible = !document.getElementById('line-inputs').classList.contains('hidden');
 
   if (lineInputsVisible) {
-    // Get and validate Line inputs
     const input1 = document.getElementById("line-start").value;
     const input2 = document.getElementById("line-end").value;
 
@@ -414,7 +396,6 @@ function validateInputs() {
       message += '- Starting Point is not valid! Must be in Format (x, y).<br>';
       isValid = false;
     } else {
-      // Parse input1 and assign to x1, y1
       const coordinates1 = input1.replace(/[()]/g, '').split(',');
       x1 = parseFloat(coordinates1[0].trim());
       y1 = parseFloat(coordinates1[1].trim());
@@ -427,14 +408,12 @@ function validateInputs() {
       message += '- End Point is not valid! Must be in Format (x, y).<br>';
       isValid = false;
     } else {
-      // Parse input2 and assign to x2, y2
       const coordinates2 = input2.replace(/[()]/g, '').split(',');
       x2 = parseFloat(coordinates2[0].trim());
       y2 = parseFloat(coordinates2[1].trim());
     }
 
   } else {
-    // Get and validate Circle inputs
     const input1 = document.getElementById("circle-start").value;
     const radius = document.getElementById("circle-radius").value;
 
@@ -445,7 +424,6 @@ function validateInputs() {
       message += '- Starting Point is not valid! Must be in Format (x, y).<br>';
       isValid = false;
     } else {
-      // Parse input1 and assign to x1, y1
       const coordinates1 = input1.replace(/[()]/g, '').split(',');
       x1 = parseFloat(coordinates1[0].trim());
       y1 = parseFloat(coordinates1[1].trim());
@@ -458,12 +436,10 @@ function validateInputs() {
       message += '- Radius is not valid! It must be a positive number.<br>';
       isValid = false;
     } else {
-      // Assign radius to r
       r = parseFloat(radius.trim());
     }
   }
 
-  // Display the validation result
   result.innerHTML = message;
   return isValid;
 }
@@ -480,7 +456,6 @@ function createTableHeaderBasic(tableHead) {
   rowHead.insertCell(6).textContent = '(X,Y)';
 }
 
-// Fungsi untuk menambah baris ke tabel
 function insertRowBasic(tableBody, x, dx, nextX, y, m, nextY, point) {
   var row = tableBody.insertRow();
   row.insertCell(0).textContent = Number.isInteger(x) ? x.toString() : x.toFixed(2);
@@ -519,7 +494,6 @@ function showLineInputs() {
   document.querySelector('a[href="#"][onclick="showCircleInputs()"]').classList.remove('onclick');
 }
 
-// Function to show inputs for circle
 function showCircleInputs() {
   toggleInputs('circle-inputs', 'line-inputs');
   disableButtons('basic-algorithm', 'dda-algorithm');
@@ -527,29 +501,26 @@ function showCircleInputs() {
   document.querySelector('a[href="#"][onclick="showLineInputs()"]').classList.remove('onclick');
 }
 
-// Helper to toggle visibility
 function toggleInputs(showId, hideId) {
   document.getElementById(showId).classList.remove('hidden');
   document.getElementById(hideId).classList.add('hidden');
 }
 
-// Helper to enable buttons and allow hover
 function enableButtons(...buttonIds) {
   buttonIds.forEach(id => {
     const button = document.getElementById(id);
     button.disabled = false;
-    button.classList.remove('no-hover'); // Remove the class that disables hover
-    button.style.pointerEvents = 'auto'; // Enable interaction
+    button.classList.remove('no-hover');
+    button.style.pointerEvents = 'auto';
   });
 }
 
-// Helper to disable buttons and remove hover
 function disableButtons(...buttonIds) {
   buttonIds.forEach(id => {
     const button = document.getElementById(id);
     button.disabled = true;
-    button.classList.add('no-hover'); // Add the class that disables hover
-    button.style.pointerEvents = 'none'; // Disable interaction
+    button.classList.add('no-hover');
+    button.style.pointerEvents = 'none';
   });
 }
 
@@ -564,7 +535,6 @@ function runBressenhamalgorithm(){
 
 
 function drawCircleChart(coordinates) {
-  // Clear previous canvas content
   document.getElementById('chart-answer').innerHTML = '<canvas id="circleCanvas" width="400" height="400"></canvas>';
 
   const ctx = document.getElementById('circleCanvas').getContext('2d');
@@ -629,17 +599,13 @@ function drawCircleChart(coordinates) {
               const coord = coordinates[index];
               const label = `(${coord.x}, ${coord.y})`;
 
-              // Set styling for text
               ctx.fillStyle = 'black';
               ctx.font = '12px Arial';
 
-              // Label positioning adjustments
               const labelWidth = ctx.measureText(label).width; // Width of the label
               const labelHeight = 12; // Height of the label
 
-              // Adjust x position
               const adjustedX = (xPos + 5 + labelWidth > chart.width) ? xPos - labelWidth - 5 : xPos + 5;
-              // Adjust y position
               const adjustedY = (yPos - labelHeight - 5 < 0) ? yPos + labelHeight + 5 : yPos - 5;
 
               ctx.fillText(label, adjustedX, adjustedY); // Draw the label
