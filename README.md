@@ -31,7 +31,7 @@ This Project is responsive in all devices, such a laptop(PC), android and tablet
  <table>
   <tr>
     <td>
-      <img src="https://github.com/user-attachments/assets/85f1c566-9db2-44c7-9af0-39a18454b5ec"/>
+      <img src="https://github.com/user-attachments/assets/85f1c566-9db2-44c7-9af0-39a18454b5ec" width="50%"/>
    </td>
   </tr>
 </table>
