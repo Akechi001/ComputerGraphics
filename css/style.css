@@ -350,9 +350,6 @@
     background-color: palevioletred;
   }
 
-  button{
-
-  }
 
   #result{
     color: indianred;
@@ -396,3 +393,50 @@ table{
 .title{
   text-align: center;
 }
+
+  nav {
+    background-color: #333;
+    overflow: hidden;
+  }
+  nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    float: left;
+    width: 50%;
+  }
+  nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+
+  /* Clear float */
+  nav::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .hidden-button{
+
+  }
+
+
+  .no-hover {
+    pointer-events: none; /* Disables hover */
+  }
+
+
+  .onclick{
+    background-color: cornflowerblue;
+    color: black;
+    font-weight: bold; /* Make the selected link bold */
+
+  }

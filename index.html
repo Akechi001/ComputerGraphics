@@ -34,14 +34,22 @@
       <h1>Digital Dots - Calculator</h1>
     </div>
     <hr class="line">
-    <div class="question">
+
+    <nav>
+      <ul>
+        <li><a class="onclick" href="#" onclick="showLineInputs()">Line</a></li>
+        <li><a href="#" onclick="showCircleInputs()">Circle</a></li>
+      </ul>
+    </nav>
+    <br>
+    <div id="line-inputs" class="question">
       <div class="point-question padding">
         <div class="text-question">
           <p>Starting Point</p>
           <p>:</p>
         </div>
         <div>
-          <input type="text" id="input1" placeholder="e.g. '(x,y)'" required>
+          <input type="text" id="line-start" placeholder="e.g. '(x,y)'" required>
         </div>
       </div>
       <div class="point-question padding">
@@ -50,25 +58,49 @@
           <p>:</p>
         </div>
         <div>
-          <input type="text" id="input2" placeholder="e.g. '(x,y)'" required>
+          <input type="text" id="line-end" placeholder="e.g. '(x,y)'" required>
         </div>
       </div>
     </div>
-    <br>
-    <div class="button-function padding">
-      <div class="button responsive-button">
-        <button type="button" onclick="if (validateInputs()) { split(); basicAlgorithm(); }">Basic Algorithm</button>
+    <div id="circle-inputs" class="question hidden">
+      <div class="point-question padding">
+        <div class="text-question">
+          <p>Center</p>
+          <p>:</p>
+        </div>
+        <div>
+          <input type="text" id="circle-start" placeholder="e.g. '(x,y)'" required>
+        </div>
       </div>
-      <div class="button responsive-button">
-        <button type="button" onclick="if (validateInputs()) { split(); ddaAlgorithm(); }">DDA (Digital Differential Analyzer)</button>
-      </div>
-      <div class="button responsive-button">
-        <button type="button" onclick="if (validateInputs()) { split(); bressenhamAlgorithm(); }">Bressenham Algorithm</button>
-      </div>
-      <div class="button responsive-button clear-button">
-        <button onclick="clearInput()">Clear</button>
+      <div class="point-question padding">
+        <div class="text-question">
+          <p>Radius (r)</p>
+          <p>:</p>
+        </div>
+        <div>
+          <input type="text" id="circle-radius" placeholder="e.g. 'r'" required>
+        </div>
       </div>
     </div>
+    <hr class="line">
+
+    <br>
+
+    <div class="button-function padding">
+        <div class="button responsive-button">
+          <button  id="basic-algorithm" type="button" onclick="if (validateInputs()) { split(); basicAlgorithm(); }">Basic Algorithm</button>
+        </div>
+        <div class="button responsive-button">
+          <button  id="dda-algorithm" type="button" onclick="if (validateInputs()) { split(); ddaAlgorithm(); }">DDA (Digital Differential Analyzer)</button>
+        </div>
+        <div class="button responsive-button">
+          <button  id="bressenham-algorithm" type="button" onclick="if (validateInputs()) { split(); runBressenhamalgorithm() }">Bressenham Algorithm</button>
+        </div>
+        <div class="button responsive-button clear-button">
+          <button onclick="clearInput()">Clear</button>
+        </div>
+      </div>
+
     <hr class="line">
     <div id="result"></div>
     <div class="table-answer padding">
