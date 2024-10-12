@@ -90,14 +90,15 @@ function ddaAlgorithm() {
 }
 
 function bressenhamAlgorithm(){
-  var dx = x2-x1;
-  var dy = y2-y1;
-  var d2y = 2*dy;
-  var d2y_dx = 2 * (dy - dx); // 2 * Δy - 2 * Δx;
-  var p = 2*dy-dx;
+  var dx = Math.abs(x2 - x1);
+  var dy = Math.abs(y2 - y1);
+  // var d2y = 2*dy;
+  // var d2y_dx = 2 * (dy - dx); // 2 * Δy - 2 * Δx;
+  // var p = 2*dy-dx;
   let sx = (x1 < x2) ? 1 : -1;
   let sy = (y1 < y2) ? 1 : -1;
   var k = 0;
+  var err = dx - dy;
   const coordinates = [];
   var tableBody = document.getElementById('resultTable').getElementsByTagName('tbody')[0];
   var tableHead = document.getElementById('resultTable').getElementsByTagName('thead')[0];
@@ -105,33 +106,55 @@ function bressenhamAlgorithm(){
   document.getElementById('question').innerText = '(' + x1 + ',' + y1 + ') --> (' + x2 + ',' + y2 + ') - Bressenham Algorithm (TABLE)';
   document.getElementById('chart-question').innerHTML = '<h2>(' + x1 + ',' + y1 + ') --> (' + x2 + ',' + y2 + ') - Bressenham Algorithm (CHART)</h2>';
   resetTable();
-  document.getElementById('diketahui').innerHTML = 'Δx : ' + dx + '<br>' + 'Δy : ' + dy  + '<br>' + 'p0 : ' + p  ;
+  // document.getElementById('diketahui').innerHTML = 'Δx : ' + dx + '<br>' + 'Δy : ' + dy  + '<br>' + 'p0 : ' + p  ;
+  document.getElementById('diketahui').innerHTML = 'Δx : ' + dx + '<br>' + 'Δy : ' + dy  + '<br>' + 'err : ' + err  + '<br>' + 'e2 : ' + 2*err   ;
   createTableHeaderBressenherm(tableHead);
 
   insertRowBressenherm(tableBody, '', '', x1, y1,`(${x1},${y1})`);
   coordinates.push({ x: x1, y: y1 });
+  // formula bressenham algorithm from PPT
+  // while (true) {
+  //
+  //   if (x1 === x2 && y1 === y2) break;
+  //
+  //   if (p > 0) {
+  //     p += d2y_dx;
+  //     x1 += sx;
+  //     y1 += sy;
+  //     insertRowBressenherm(tableBody, k, p, x1, y1, `(${x1},${y1})`);
+  //     coordinates.push({ x: x1, y: y1 });
+  //     console.log(x1, y1, p, sx, sy, k);
+  //   }
+  //   if (p < 0) {
+  //     p += d2y;
+  //     x1 += sx;
+  //     insertRowBressenherm(tableBody, k, p, x1, y1, `(${x1},${y1})`);
+  //     coordinates.push({ x: x1, y: y1 });
+  //     console.log(x1, y1);
+  //   }
+  //   k++;
+  // }
 
-  while (true) {
+  //another formula for bressenham algorithm
+  while (x1 !== x2 || y1 !== y2) {
+    let e2 = 2 * err;
 
-    if (x1 === x2 && y1 === y2) break;
-
-    if (p > 0) {
-      p += d2y_dx;
+    if (e2 > -dy) {
+      err -= dy;
       x1 += sx;
+    }
+
+    if (e2 < dx) {
+      err += dx;
       y1 += sy;
-      insertRowBressenherm(tableBody, k, p, x1, y1, `(${x1},${y1})`);
-      coordinates.push({ x: x1, y: y1 });
-      console.log(x1, y1, p, sx, sy, k);
     }
-    if (p < 0) {
-      p += d2y;
-      x1 += sx;
-      insertRowBressenherm(tableBody, k, p, x1, y1, `(${x1},${y1})`);
-      coordinates.push({ x: x1, y: y1 });
-      console.log(x1, y1);
-    }
+
+    insertRowBressenherm(tableBody, k, e2, x1, y1, `(${x1},${y1})`);
+    coordinates.push({ x: x1, y: y1 });
     k++;
   }
+
+
   drawChart(coordinates);
 }
 
@@ -341,7 +364,7 @@ function insertRowBasic(tableBody, x, dx, nextX, y, m, nextY, point) {
 function createTableHeaderBressenherm(tableHead) {
   var rowHead = tableHead.insertRow();
   rowHead.insertCell(0).textContent = 'K';
-  rowHead.insertCell(1).textContent = 'Pk';
+  rowHead.insertCell(1).textContent = 'e2';
   rowHead.insertCell(2).textContent = 'X';
   rowHead.insertCell(3).textContent = 'Y';
   rowHead.insertCell(4).textContent = '(X,Y)';
