@@ -28,7 +28,7 @@ This Project is responsive in all devices, such a laptop(PC), android and tablet
 # Deficiency
 - Data X or Y too bigger
 - Chart of circle Bressenham Algorithm :
-  <img src="https://github.com/user-attachments/assets/85f1c566-9db2-44c7-9af0-39a18454b5ec" width="40&"/>
+  <img src="https://github.com/user-attachments/assets/85f1c566-9db2-44c7-9af0-39a18454b5ec" width="80&"/>
 
 
 # Example
