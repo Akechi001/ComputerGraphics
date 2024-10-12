@@ -140,8 +140,8 @@ Here are the example:
   <tr>
     <td>
       - Bressenham Algorithm <br><br>
-      <img src="![image](https://github.com/user-attachments/assets/d5bd422f-7835-424f-a32c-319fe1432ee0)" width="40%"/>
-      <img src="![image](https://github.com/user-attachments/assets/afdb3c8f-4a97-4170-b5e6-88a1a09c012d)" width="40%"/>
+      <img src="https://github.com/user-attachments/assets/d5bd422f-7835-424f-a32c-319fe1432ee0" width="40%"/>
+      <img src="https://github.com/user-attachments/assets/afdb3c8f-4a97-4170-b5e6-88a1a09c012d" width="40%"/>
     </td>
   </tr>
 </table>
@@ -153,8 +153,8 @@ Here are the example:
   <tr>
     <td>
       - Bressenham Algorithm <br><br>
-      <img src="![image](https://github.com/user-attachments/assets/6111b3af-9c72-4a39-bb17-1de113f0495d)" width="40%"/>
-      <img src="![image](https://github.com/user-attachments/assets/7e8fc013-c416-42db-a71d-c328048c4eb1)" width="40%"/>
+      <img src="https://github.com/user-attachments/assets/6111b3af-9c72-4a39-bb17-1de113f0495d" width="40%"/>
+      <img src="https://github.com/user-attachments/assets/7e8fc013-c416-42db-a71d-c328048c4eb1" width="40%"/>
     </td>
   </tr>
 </table>
