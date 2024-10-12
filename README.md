@@ -16,7 +16,7 @@ This project mostly used JavaScript, HTML and CSS.
 This Project is responsive in all devices, such a laptop(PC), android and tablet.
 - Android or iPhone:
   ![Screenshot 2024-10-04 223833](https://github.com/user-attachments/assets/e745276f-a54d-44c4-aeb4-84f6f542b363)
-  
+
 - Tablet or iPad:
   ![Screenshot 2024-10-04 223743](https://github.com/user-attachments/assets/815aa215-f4bc-4af9-9549-25df0a8d2595)
 
@@ -27,7 +27,7 @@ This Project is responsive in all devices, such a laptop(PC), android and tablet
 - Data X or Y too bigger
 
 # Example
-  Here are the example:
+Here are the example:
   ```
   1. (-5,5) -> (1,2)
   ```
