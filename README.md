@@ -4,27 +4,32 @@ This project is to make a digital line using two methods :
 ```
 - Basic Algorithm
 - DDA (Digital Differential Analyzer)
+- Bressenham Algorithm
 ```
 
 Click this link to access the project : https://akechi001.github.io/ComputerGraphics/
 
 This project mostly used JavaScript, HTML and CSS.
 
-
-
 # Responsive
 This Project is responsive in all devices, such a laptop(PC), android and tablet.
 - Android or iPhone:
-  ![Screenshot 2024-10-04 223833](https://github.com/user-attachments/assets/e745276f-a54d-44c4-aeb4-84f6f542b363)
+  ![image](https://github.com/user-attachments/assets/90c2b1be-9b9d-48eb-9dda-3b123a4c16c9)
+
 
 - Tablet or iPad:
-  ![Screenshot 2024-10-04 223743](https://github.com/user-attachments/assets/815aa215-f4bc-4af9-9549-25df0a8d2595)
+  ![image](https://github.com/user-attachments/assets/55ac4894-e43e-43fa-89f6-30dc2c8af507)
+
 
 - Laptop or PC:
-  ![Screenshot 2024-10-04 223721](https://github.com/user-attachments/assets/1d3525ae-4693-42c4-be8d-a83b6a4ad7bc)
+  ![image](https://github.com/user-attachments/assets/86b98796-1db1-4f94-a39d-8ecb2e505f6e)
+
 
 # Deficiency
 - Data X or Y too bigger
+- Chart of circle Bressenham Algorithm :
+  ![image](https://github.com/user-attachments/assets/85f1c566-9db2-44c7-9af0-39a18454b5ec)
+
 
 # Example
 Here are the example:
@@ -127,3 +132,31 @@ Here are the example:
     </td>
   </tr>
 </table>
+
+  ```
+  6. (-3,3) -> (-1,3)
+  ```
+  <table>
+  <tr>
+    <td>
+      - Bressenham Algorithm <br><br>
+      <img src="![image](https://github.com/user-attachments/assets/d5bd422f-7835-424f-a32c-319fe1432ee0)" width="40%"/>
+      <img src="![image](https://github.com/user-attachments/assets/afdb3c8f-4a97-4170-b5e6-88a1a09c012d)" width="40%"/>
+    </td>
+  </tr>
+</table>
+
+ ```
+  7. (7,-1) -> (-4,-6)
+  ```
+  <table>
+  <tr>
+    <td>
+      - Bressenham Algorithm <br><br>
+      <img src="![image](https://github.com/user-attachments/assets/6111b3af-9c72-4a39-bb17-1de113f0495d)" width="40%"/>
+      <img src="![image](https://github.com/user-attachments/assets/7e8fc013-c416-42db-a71d-c328048c4eb1)" width="40%"/>
+    </td>
+  </tr>
+</table>
+
+
