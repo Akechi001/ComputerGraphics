@@ -88,6 +88,56 @@ function ddaAlgorithm() {
 
   drawChart(coordinates);
 }
+
+function bressenhamAlgorithm(){
+  var dx = x2-x1;
+  var dy = y2-y1;
+  var d2y = 2*dy;
+  var d2y_dx = 2 * (dy - dx); // 2 * Δy - 2 * Δx;
+  var p = 2*dy-dx;
+  let sx = (x1 < x2) ? 1 : -1;
+  let sy = (y1 < y2) ? 1 : -1;
+  var k = 0;
+  const coordinates = [];
+  var tableBody = document.getElementById('resultTable').getElementsByTagName('tbody')[0];
+  var tableHead = document.getElementById('resultTable').getElementsByTagName('thead')[0];
+
+  document.getElementById('question').innerText = '(' + x1 + ',' + y1 + ') --> (' + x2 + ',' + y2 + ') - Bressenham Algorithm (TABLE)';
+  document.getElementById('chart-question').innerHTML = '<h2>(' + x1 + ',' + y1 + ') --> (' + x2 + ',' + y2 + ') - Bressenham Algorithm (CHART)</h2>';
+  resetTable();
+  document.getElementById('diketahui').innerHTML = 'Δx : ' + dx + '<br>' + 'Δy : ' + dy  + '<br>' + 'p0 : ' + p  ;
+  createTableHeaderBressenherm(tableHead);
+
+  insertRowBressenherm(tableBody, '', '', x1, y1,`(${x1},${y1})`);
+  coordinates.push({ x: x1, y: y1 });
+
+  while (true) {
+
+    if (x1 === x2 && y1 === y2) break;
+
+    if (p > 0) {
+      p += d2y_dx;
+      x1 += sx;
+      y1 += sy;
+      insertRowBressenherm(tableBody, k, p, x1, y1, `(${x1},${y1})`);
+      coordinates.push({ x: x1, y: y1 });
+      console.log(x1, y1, p, sx, sy, k);
+    }
+    if (p < 0) {
+      p += d2y;
+      x1 += sx;
+      insertRowBressenherm(tableBody, k, p, x1, y1, `(${x1},${y1})`);
+      coordinates.push({ x: x1, y: y1 });
+      console.log(x1, y1);
+    }
+    k++;
+  }
+  drawChart(coordinates);
+}
+
+function circleBressenham(){
+
+}
 let currentChart = null; // Menyimpan referensi ke chart saat ini
 
 function drawChart(coordinates) {
@@ -287,3 +337,24 @@ function insertRowBasic(tableBody, x, dx, nextX, y, m, nextY, point) {
   row.insertCell(5).textContent = Number.isInteger(nextY) ? nextY.toString() : nextY.toFixed(2);
   row.insertCell(6).textContent = point;
 }
+
+function createTableHeaderBressenherm(tableHead) {
+  var rowHead = tableHead.insertRow();
+  rowHead.insertCell(0).textContent = 'K';
+  rowHead.insertCell(1).textContent = 'Pk';
+  rowHead.insertCell(2).textContent = 'X';
+  rowHead.insertCell(3).textContent = 'Y';
+  rowHead.insertCell(4).textContent = '(X,Y)';
+}
+
+// Fungsi untuk menambah baris ke tabel
+function insertRowBressenherm(tableBody, k, pk, x, y, point) {
+  var row = tableBody.insertRow();
+
+  row.insertCell(0).textContent = k;
+  row.insertCell(1).textContent = pk;
+  row.insertCell(2).textContent = Number.isInteger(x) ? x.toString() : x.toFixed(2);
+  row.insertCell(3).textContent = Number.isInteger(y) ? y.toString() : y.toFixed(2);
+  row.insertCell(4).textContent = point;
+}
+
