@@ -178,18 +178,4 @@ Here are the example:
   </tr>
 </table>
 
- ```
-  8. center: (0,0) r = 10
-  ```
-  <table>
-  <tr>
-    <td>
-      - Bressenham Algorithm <br><br>
-      <img src="https://github.com/user-attachments/assets/43b40956-d035-4062-9c65-b4e1dfdb7fb5" width="30%"/>
-      <img src="https://github.com/user-attachments/assets/4c90e997-46f1-48be-b149-f00f623e1e5b" width="30%"/>
-      <img src="https://github.com/user-attachments/assets/fb2f9266-395d-4552-8e08-bb8b32d17aa8" width="30%"/>
-    </td>
-  </tr>
-</table>
-
 
