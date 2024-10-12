@@ -397,6 +397,7 @@ table{
   nav {
     background-color: #333;
     overflow: hidden;
+    border-radius: 15px;
   }
   nav ul {
     display: flex;
