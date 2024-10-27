@@ -214,7 +214,7 @@ function bresenhamCircleAlgorithm() {
     plotCirclePoints(xc, yc, x, y);
   }
 
-  drawCircleChart(coordinates);
+  createGrid(coordinates,x1,y1, r);
 }
 
 
@@ -222,36 +222,37 @@ function bresenhamCircleAlgorithm() {
 let currentChart = null;
 
 function drawChart(coordinates) {
-    document.getElementById('chart-answer').innerHTML='<canvas id="ddaCanvas" width="400" height="400"></canvas>';
+  document.getElementById('chart-answer').innerHTML = '<canvas id="ddaCanvas" width="400" height="400"></canvas>';
 
   const ctx = document.getElementById('ddaCanvas').getContext('2d');
 
   if (currentChart) {
     currentChart.destroy();
   }
+
   const xValues = coordinates.map(coord => Math.round(coord.x));
   const yValues = coordinates.map(coord => Math.round(coord.y));
-  const minX = Math.floor(Math.min(...xValues)) -1;
-  const maxX = Math.ceil(Math.max(...xValues)) +1;
-  const minY = Math.min(...yValues)-1;
-  const maxY = Math.max(...yValues)+1;
+  const minX = Math.floor(Math.min(...xValues)) - 1;
+  const maxX = Math.ceil(Math.max(...xValues)) + 1;
+  const minY = Math.min(...yValues) - 1;
+  const maxY = Math.max(...yValues) + 1;
+
   const xLabels = [];
   for (let i = maxX; i >= minX; i--) {
     xLabels.push(i);
   }
+
   const chartData = {
     labels: xLabels,
     datasets: [{
       label: "Digital Line",
       data: coordinates,
       borderColor: 'orange',
-      backgroundColor: 'rgba(255, 150, 0, 0.5)',
-      fill: false,
+      backgroundColor: 'rgba(255, 150, 0, 0.3)', // Set the fill color with some transparency
+      fill: 'start', // Enable boundary fill
       lineTension: 0,
     }]
   };
-
-
 
   const chartOptions = {
     scales: {
@@ -279,6 +280,7 @@ function drawChart(coordinates) {
           const ctx = chart.ctx;
           const canvasWidth = chart.width;
           const canvasHeight = chart.height;
+
           chart.data.datasets.forEach((dataset, i) => {
             const meta = chart.getDatasetMeta(i);
             meta.data.forEach((point, index) => {
@@ -294,7 +296,6 @@ function drawChart(coordinates) {
               const labelHeight = 12;
 
               const adjustedX = (xPos + 5 + labelWidth > canvasWidth) ? xPos - labelWidth - 5 : xPos + 5;
-
               const adjustedY = (yPos - labelHeight - 5 < 0) ? yPos + labelHeight + 5 : yPos - 5;
 
               ctx.fillText(label, adjustedX, adjustedY); // Positioning the label near the point
@@ -304,7 +305,6 @@ function drawChart(coordinates) {
       }
     }
   };
-
 
   currentChart = new Chart(ctx, {
     type: 'line',
@@ -316,6 +316,53 @@ function drawChart(coordinates) {
     }]
   });
 }
+
+function createGrid(coordinates, x1, y1, radius) {
+  // Tentukan ukuran grid berdasarkan radius dan margin tambahan di sekitar lingkaran
+  const margin = 3; // Sel tambahan di sekitar lingkaran agar tidak menempel di tepi
+  const gridSize = 2 * radius + margin; // Ukuran total grid
+  const grid = document.getElementById('grid'); // Elemen grid
+
+  if (!grid) {
+    console.error("Grid element not found");
+    return;
+  }
+
+  // Bersihkan grid sebelumnya
+  grid.innerHTML = '';
+
+  // Set ukuran setiap sel dalam grid
+  const cellSize = 40;
+  grid.style.gridTemplateColumns = `repeat(${gridSize}, ${cellSize}px)`;
+  grid.style.gridTemplateRows = `repeat(${gridSize}, ${cellSize}px)`;
+
+  // Offset agar titik pusat `(x1, y1)` berada di tengah grid
+  const centerOffsetX = Math.floor(gridSize / 2) - x1;
+  const centerOffsetY = Math.floor(gridSize / 2) + y1;
+
+  // Membuat sel dalam grid
+  for (let i = 0; i < gridSize; i++) {
+    for (let j = 0; j < gridSize; j++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+
+      // Hitung koordinat untuk ditampilkan, dengan titik pusat di tengah
+      const displayX = j - centerOffsetX;
+      const displayY = centerOffsetY - i;
+      cell.textContent = `(${displayX},${displayY})`;
+
+      // Sorot sel jika merupakan bagian dari koordinat lingkaran
+      if (coordinates.some(coord => coord.x === displayX && coord.y === displayY)) {
+        cell.classList.add('highlight');
+      }
+
+      grid.appendChild(cell);
+    }
+  }
+
+  grid.style.display = 'grid'; // Tampilkan grid
+}
+
 function resetTable() {
   document.getElementById('diketahui').innerHTML = '';
   document.getElementById("head-table").innerText = "";
@@ -531,98 +578,4 @@ function runBressenhamalgorithm(){
   }else{
     bressenhamAlgorithm();
   }
-}
-
-
-function drawCircleChart(coordinates) {
-  document.getElementById('chart-answer').innerHTML = '<canvas id="circleCanvas" width="400" height="400"></canvas>';
-
-  const ctx = document.getElementById('circleCanvas').getContext('2d');
-
-  if (currentChart) {
-    currentChart.destroy();
-  }
-
-  const xValues = coordinates.map(coord => coord.x);
-  const yValues = coordinates.map(coord => coord.y);
-  const minX = Math.floor(Math.min(...xValues)) - 1;
-  const maxX = Math.ceil(Math.max(...xValues)) + 1;
-  const minY = Math.floor(Math.min(...yValues)) - 1;
-  const maxY = Math.ceil(Math.max(...yValues)) + 1;
-
-  const xLabels = [];
-  for (let i = minX; i <= maxX; i++) {
-    xLabels.push(i);
-  }
-
-  const chartData = {
-    labels: xLabels,
-    datasets: [{
-      label: "Bresenham Circle",
-      data: coordinates,
-      borderColor: 'blue',
-      backgroundColor: 'rgba(0, 150, 255, 0.5)',
-      fill: false,
-      lineTension: 0,
-    }]
-  };
-
-  const chartOptions = {
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: 'X Axis'
-        },
-      },
-      y: {
-        title: {
-          display: true,
-          text: 'Y Axis'
-        },
-        min: minY,
-        max: maxY,
-        ticks: {
-          stepSize: 1,
-        }
-      }
-    },
-    plugins: {
-      drawCoordinates: {
-        afterDatasetsDraw: (chart) => {
-          const ctx = chart.ctx;
-          chart.data.datasets.forEach((dataset, i) => {
-            const meta = chart.getDatasetMeta(i);
-            meta.data.forEach((point, index) => {
-              const xPos = point.x;
-              const yPos = point.y;
-              const coord = coordinates[index];
-              const label = `(${coord.x}, ${coord.y})`;
-
-              ctx.fillStyle = 'black';
-              ctx.font = '12px Arial';
-
-              const labelWidth = ctx.measureText(label).width; // Width of the label
-              const labelHeight = 12; // Height of the label
-
-              const adjustedX = (xPos + 5 + labelWidth > chart.width) ? xPos - labelWidth - 5 : xPos + 5;
-              const adjustedY = (yPos - labelHeight - 5 < 0) ? yPos + labelHeight + 5 : yPos - 5;
-
-              ctx.fillText(label, adjustedX, adjustedY); // Draw the label
-            });
-          });
-        }
-      }
-    }
-  };
-
-  currentChart = new Chart(ctx, {
-    type: 'line',
-    data: chartData,
-    options: chartOptions,
-    plugins: [{
-      id: 'drawCoordinates',
-      afterDatasetsDraw: chartOptions.plugins.drawCoordinates.afterDatasetsDraw
-    }]
-  });
 }

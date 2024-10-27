@@ -441,3 +441,54 @@ table{
     font-weight: bold; /* Make the selected link bold */
 
   }
+
+  .grid {
+    display: grid;
+    gap: 1px;
+  }
+  /* Style for each cell in the grid */
+  .cell {
+    width: 50px;
+    height: 50px;
+  }
+  /* Color classes */
+  .green {
+    background-color: green;
+  }
+  .black {
+    background-color: black;
+  }
+
+
+  #grid {
+    display: grid;
+    gap: 1px; /* Add spacing between cells */
+  }
+
+  .cell {
+    width: 40px; /* Match this with cellSize in JavaScript */
+    height: 40px; /* Match this with cellSize in JavaScript */
+    border: 1px solid #ccc; /* Cell border */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .highlight {
+    background-color: black; /* Color for highlighted cells */
+    color: white; /* Text color for better visibility */
+  }
+
+  .cell {
+    font-size: 10px; /* Sesuaikan sesuai kebutuhan */
+  }
+
+  .grid-responsive{
+    display: flex;
+    margin: 10px;
+    overflow-x: auto;
+    justify-items: center;
+    transform-origin: center; /* Set the origin to center */
+    transition: transform 0.3s; /* Smooth scaling transition */
+  }
+
