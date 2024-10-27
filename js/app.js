@@ -169,13 +169,12 @@ function bresenhamCircleAlgorithm() {
   var y = r;
   var p = 1 - r;
   const coordinates = [];
-
   var tableBody = document.getElementById('resultTable').getElementsByTagName('tbody')[0];
   var tableHead = document.getElementById('resultTable').getElementsByTagName('thead')[0];
 
+  resetTable();
   document.getElementById('question').innerText = 'Center: (' + xc + ',' + yc + ') Radius: ' + r + ' - Bresenham Circle Algorithm (TABLE)';
   document.getElementById('chart-question').innerHTML = '<h2>Center: (' + xc + ',' + yc + ') Radius: ' + r + ' - Bresenham Circle Algorithm (CHART)</h2>';
-  resetTable();
   document.getElementById('diketahui').innerHTML = 'p0 : ' + p;
   createTableHeaderBressenherm(tableHead);
 
@@ -251,9 +250,9 @@ function drawChart(coordinates) {
       label: "Digital Line",
       data: coordinates,
       borderColor: 'orange',
-      backgroundColor: 'rgba(255, 150, 0, 0.3)', // Set the fill color with some transparency
-      fill: 'start', // Enable boundary fill
-      lineTension: 0,
+      backgroundColor: 'rgba(255, 150, 0, 0.3)', // You can keep this for line color if you want
+      fill: false, // Set to false to remove the fill under the line
+      lineTension: 0, // Set tension to 0 for a straight line
     }]
   };
 
@@ -411,6 +410,10 @@ function resetTable() {
   document.getElementById("head-table").innerText = "";
   document.getElementById("answer-table").innerText = "";
   document.getElementById("error-answer").innerHTML = "";
+  document.getElementById('chart-answer').innerHTML = "";
+  document.getElementById('grid').innerHTML = "";
+  document.getElementById('grid').removeAttribute('style');
+
 }
 
 function createTableHeader() {
