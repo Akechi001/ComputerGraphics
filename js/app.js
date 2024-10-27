@@ -215,6 +215,9 @@ function bresenhamCircleAlgorithm() {
   }
 
   createGrid(coordinates,x1,y1, r);
+
+  boundaryFill(x1, y1, 'fill', 'highlight');
+
 }
 
 
@@ -362,6 +365,46 @@ function createGrid(coordinates, x1, y1, radius) {
 
   grid.style.display = 'grid'; // Tampilkan grid
 }
+function boundaryFill(x, y, fillClass, boundaryClass) {
+  const grid = document.getElementById('grid');
+  const cells = Array.from(grid.getElementsByClassName('cell'));
+  const gridSize = Math.sqrt(cells.length);
+
+  // Convert grid cell coordinates to a 1D index
+  function getCellIndex(x, y) {
+    return (gridSize - y - 1) * gridSize + (x + Math.floor(gridSize / 2));
+  }
+
+  // Check if a cell is out of bounds, a boundary, or already filled
+  function isBoundaryOrFilled(x, y) {
+    const index = getCellIndex(x, y);
+    if (index < 0 || index >= cells.length) return true; // Out of grid bounds
+    return cells[index].classList.contains(boundaryClass) || cells[index].classList.contains(fillClass);
+  }
+
+  // Initialize stack with the starting point
+  const stack = [{ x, y }];
+
+  // Iterative fill using a stack
+  while (stack.length > 0) {
+    const { x, y } = stack.pop();
+    if (isBoundaryOrFilled(x, y)) continue;
+
+    const cell = cells[getCellIndex(x, y)];
+    cell.classList.add(fillClass);
+
+    // Add neighboring cells
+    stack.push({ x: x + 1, y }); // Right
+    stack.push({ x: x - 1, y }); // Left
+    stack.push({ x, y: y + 1 }); // Up
+    stack.push({ x, y: y - 1 }); // Down
+  }
+}
+
+// Start filling from the circle's center
+
+
+// Call the boundaryFill function with the center coordinates and class names for fill and boundary
 
 function resetTable() {
   document.getElementById('diketahui').innerHTML = '';

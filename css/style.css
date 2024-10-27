@@ -485,10 +485,15 @@ table{
 
   .grid-responsive{
     display: flex;
-    margin: 10px;
+    justify-content: flex-start; /* Start scroll at the left */
     overflow-x: auto;
     justify-items: center;
     transform-origin: center; /* Set the origin to center */
     transition: transform 0.3s; /* Smooth scaling transition */
   }
+
+  .fill {
+    background-color: darkseagreen; /* or another distinct fill color */
+  }
+
 
